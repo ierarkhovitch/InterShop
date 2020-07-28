@@ -1,0 +1,7 @@
+cd backend
+virtualenv - python3 venv
+C:\Users\dkozyukov\PycharmProjects\InternetShop\venv\Scripts\activate.bat
+python -m pip install -r requirements.txt
+cd prj
+py manage.py migrate
+py manage.py runserver 8989
