@@ -2,10 +2,11 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import serializers
 from drf_yasg.utils import swagger_auto_schema
+from rest_framework.decorators import api_view
 
 
 class CommonResponseSerializer(serializers.Serializer):
-    status = serializers.ImageField()
+    status = serializers.IntegerField()
     message = serializers.CharField()
 
 
@@ -23,4 +24,12 @@ class AuthView(APIView):
         responses={200: CommonResponseSerializer}
     )
     def post(self, request):
-        return Response({'status': 0, 'message': 'ok'})
+        return Response(CommonResponseSerializer({
+            'status': 0,
+            'message': 'Ok'
+        }).data)
+
+
+@api_view()
+def hello(request):
+    return Response({'message': 'Hello'})
