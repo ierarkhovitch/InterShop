@@ -19,6 +19,7 @@ from rest_framework import permissions, routers
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from market.views.category import CategoryViewSet
+from market.views.auth import AuthView
 
 router = routers.DefaultRouter()
 router.register(r'category', CategoryViewSet)
@@ -40,7 +41,10 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('V1/', include(router.urls)),
+    path('V1/', include([
+        path('generic/', include(router.urls)),
+        path('userlogin', AuthView.as_view())
+    ])),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('doc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
