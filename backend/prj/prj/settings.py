@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'market',
     'drf_yasg',
     'channels',
+    'image_cropping',
+    'easy_thumbnails',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +132,6 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 10
 }
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
