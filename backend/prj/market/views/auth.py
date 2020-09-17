@@ -30,6 +30,6 @@ class AuthView(APIView):
         }).data)
 
 
-@api_view()
-def hello(request):
-    return Response({'message': 'Hello'})
+# @api_view()
+# def hello(request):
+#     return Response({'message': 'Hello'})
